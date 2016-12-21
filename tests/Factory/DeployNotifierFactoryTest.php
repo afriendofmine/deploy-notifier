@@ -26,4 +26,9 @@ class DeployNotifierFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf(HipChatNotifier::class ,$this->deployNotifierFactory->create(DeployNotifierFactory::HIPCHAT));
     }
+
+    public function testDefaultNotifier()
+    {
+        $this->assertInstanceOf(HipChatNotifier::class ,$this->deployNotifierFactory->create('foo'));
+    }
 }

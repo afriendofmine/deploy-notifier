@@ -22,5 +22,8 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
         $message->setColor('red');
         $this->assertSame('red', $message->getColor());
+
+        $message->setHtml(true);
+        $this->assertTrue($message->isHtml());
     }
 }
