@@ -2,6 +2,8 @@
 
 We’re using the deploy notifier to send deployment notifications to our source for communicating. This package currently supports only HipChat. You’re welcome to create “pull requests” to add more notifiers.
 
+[![Build Status](https://travis-ci.org/afriendofmine/deploy-notifier.svg?branch=master)](https://travis-ci.org/afriendofmine/deploy-notifier)[![Coverage Status](https://coveralls.io/repos/github/afriendofmine/deploy-notifier/badge.svg?branch=master)](https://coveralls.io/github/afriendofmine/deploy-notifier?branch=master)
+
 ## Usage
 Add following settings to .env
 
