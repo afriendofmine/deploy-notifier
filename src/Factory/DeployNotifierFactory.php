@@ -12,6 +12,17 @@ final class DeployNotifierFactory
 {
     const HIPCHAT = 'hipchat';
 
+    /** @var array */
+    private $config;
+
+    /**
+     * @param array $config
+     */
+    public function __construct(array $config)
+    {
+        $this->config = $config;
+    }
+
     /**
      * @param string $type
      *
@@ -32,8 +43,11 @@ final class DeployNotifierFactory
      */
     private function getHipChatNotifier()
     {
-        $client = new Client(new OAuth2(config('deploy-notifier.notifiers.hipchat.room_token')));
+        $roomId = $this->config['hipchat']['room_id'];
+        $token = $this->config['hipchat']['room_token'];
 
-        return new HipChatNotifier(new RoomAPI($client), config('deploy-notifier.notifiers.hipchat.room_id'));
+        $client = new Client(new OAuth2($token));
+
+        return new HipChatNotifier(new RoomAPI($client), $roomId);
     }
 }

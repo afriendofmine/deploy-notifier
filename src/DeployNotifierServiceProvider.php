@@ -22,7 +22,7 @@ class DeployNotifierServiceProvider extends ServiceProvider
     {
         // bind DeployNotifierInterface
         $this->app->singleton(DeployNotifierInterface::class, function ($app) {
-            $deployNotifierFactory = new DeployNotifierFactory();
+            $deployNotifierFactory = new DeployNotifierFactory(config('deploy-notifier.notifiers'));
 
             return $deployNotifierFactory->create(config('deploy-notifier.settings.notifier'));
         });
