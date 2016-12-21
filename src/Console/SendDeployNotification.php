@@ -47,7 +47,7 @@ class SendDeployNotification extends Command
         $message = new Message(config('deploy-notifier.settings.sender'));
         $message->setBody(sprintf('<b>%s</b> Has been deployed to <b>%s</b>', config('deploy-notifier.settings.sender'), config('deploy-notifier.settings.environment')));
         $message->setHtml(true);
-        $message->setColor();
+        $message->setColor($message->getColor());
 
         try {
             $this->deployNotifier->sendNotification($message);
