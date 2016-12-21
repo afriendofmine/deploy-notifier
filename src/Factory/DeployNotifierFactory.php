@@ -43,8 +43,13 @@ final class DeployNotifierFactory
      */
     private function getHipChatNotifier()
     {
-        $roomId = $this->config['hipchat']['room_id'];
-        $token = $this->config['hipchat']['room_token'];
+        $roomId = '';
+        $token = '';
+
+        if (isset($this->config['hipchat'])) {
+            $roomId = $this->config['hipchat']['room_id'];
+            $token = $this->config['hipchat']['room_token'];
+        }
 
         $client = new Client(new OAuth2($token));
 
