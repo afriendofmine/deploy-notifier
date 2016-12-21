@@ -1,6 +1,6 @@
 <?php
 
-use Afom\DeployNotifier\Message;
+namespace Afom\DeployNotifier;
 
 interface DeployNotifierInterface
 {
