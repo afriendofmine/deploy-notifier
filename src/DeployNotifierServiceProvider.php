@@ -5,7 +5,6 @@ namespace Afom\DeployNotifier;
 use Afom\DeployNotifier\Console\SendDeployNotification;
 use Afom\DeployNotifier\Factory\DeployNotifierFactory;
 use Illuminate\Support\ServiceProvider;
-use DeployNotifierInterface;
 
 class DeployNotifierServiceProvider extends ServiceProvider
 {

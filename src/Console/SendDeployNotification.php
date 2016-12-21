@@ -2,9 +2,9 @@
 
 namespace Afom\DeployNotifier\Console;
 
+use Afom\DeployNotifier\DeployNotifierInterface;
 use Afom\DeployNotifier\Message;
 use Illuminate\Console\Command;
-use DeployNotifierInterface;
 
 class SendDeployNotification extends Command
 {

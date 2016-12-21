@@ -4,6 +4,7 @@ namespace Afom\DeployNotifier\Notifiers;
 
 use Afom\DeployNotifier\Exception\DeployNotifierException;
 use GorkaLaucirica\HipchatAPIv2Client\API\RoomAPI;
+use Afom\DeployNotifier\DeployNotifierInterface;
 use GorkaLaucirica\HipchatAPIv2Client\Client;
 use Afom\DeployNotifier\Message;
 

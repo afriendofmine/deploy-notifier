@@ -2,10 +2,10 @@
 
 namespace Afom\DeployNotifier\Factory;
 
+use Afom\DeployNotifier\DeployNotifierInterface;
 use Afom\DeployNotifier\Notifiers\HipChatNotifier;
 use GorkaLaucirica\HipchatAPIv2Client\Auth\OAuth2;
 use GorkaLaucirica\HipchatAPIv2Client\Client;
-use DeployNotifierInterface;
 
 final class DeployNotifierFactory
 {
