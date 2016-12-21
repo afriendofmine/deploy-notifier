@@ -1,0 +1,22 @@
+{
+    "name": "afom/deploy-notifier",
+    "description": "Deploy notifier for Laravel.",
+    "keywords": ["laravel", "deploy", "notifier", "hipchat"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AFOM Development team",
+            "email": "development@afriendofmine.nl"
+        }
+    ],
+    "require": {
+        "gorkalaucirica/hipchat-v2-api-client": "^1.5",
+        "illuminate/console": "^5.0,<5.5",
+        "illuminate/support": "^5.0,<5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Afom\\DeployNotifier\\": "src"
+        }
+    }
+}
