@@ -5,22 +5,21 @@ namespace Afom\DeployNotifier\Notifiers;
 use Afom\DeployNotifier\Exception\DeployNotifierException;
 use GorkaLaucirica\HipchatAPIv2Client\API\RoomAPI;
 use Afom\DeployNotifier\DeployNotifierInterface;
-use GorkaLaucirica\HipchatAPIv2Client\Client;
 use Afom\DeployNotifier\Message;
 
 class HipChatNotifier implements DeployNotifierInterface
 {
-    /** @var Client */
+    /** @var RoomAPI */
     private $client;
 
     /** @var string */
     private $roomID;
 
     /**
-     * @param Client $client
-     * @param string $roomID
+     * @param RoomAPI $client
+     * @param string  $roomID
      */
-    public function __construct(Client $client, $roomID)
+    public function __construct(RoomAPI $client, $roomID)
     {
         $this->client = $client;
         $this->roomID = $roomID;
@@ -36,18 +35,10 @@ class HipChatNotifier implements DeployNotifierInterface
         $hipChatMessage = $this->createHipChatMessage($message);
 
         try {
-            return $this->getRoomAPI()->sendRoomNotification($this->roomID, $hipChatMessage);
+            return $this->client->sendRoomNotification($this->roomID, $hipChatMessage);
         } catch (\Exception $exception) {
             throw new DeployNotifierException($exception->getMessage(), $exception->getCode());
         }
-    }
-
-    /**
-     * @return RoomAPI
-     */
-    private function getRoomAPI()
-    {
-        return new RoomAPI($this->client);
     }
 
     /**

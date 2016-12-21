@@ -4,6 +4,7 @@ namespace Afom\DeployNotifier\Factory;
 
 use Afom\DeployNotifier\DeployNotifierInterface;
 use Afom\DeployNotifier\Notifiers\HipChatNotifier;
+use GorkaLaucirica\HipchatAPIv2Client\API\RoomAPI;
 use GorkaLaucirica\HipchatAPIv2Client\Auth\OAuth2;
 use GorkaLaucirica\HipchatAPIv2Client\Client;
 
@@ -33,6 +34,6 @@ final class DeployNotifierFactory
     {
         $client = new Client(new OAuth2(config('deploy-notifier.notifiers.hipchat.room_token')));
 
-        return new HipChatNotifier($client, config('deploy-notifier.notifiers.hipchat.room_id'));
+        return new HipChatNotifier(new RoomAPI($client), config('deploy-notifier.notifiers.hipchat.room_id'));
     }
 }
