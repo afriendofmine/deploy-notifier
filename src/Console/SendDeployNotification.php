@@ -45,7 +45,7 @@ class SendDeployNotification extends Command
     public function handle()
     {
         $message = new Message(config('deploy-notifier.settings.sender'));
-        $message->setBody(sprintf('<b>%s</b> Has been deployed to <b>%s</b>', config('deploy-notifier.settings.sender'), config('deploy-notifier.settings.environment')));
+        $message->setBody(sprintf('<b>%s</b> Has been deployed to %s', config('deploy-notifier.settings.sender'), $this->getEnvironment()));
         $message->setHtml(true);
         $message->setColor(config('deploy-notifier.settings.color'));
 
@@ -54,5 +54,19 @@ class SendDeployNotification extends Command
         } catch (\Exception $exception) {
             $this->info('Something went wrong. Deploy notification has NOT been sent!');
         }
+    }
+
+    /**
+     * @return string
+     */
+    private function getEnvironment()
+    {
+        $environment = config('deploy-notifier.settings.environment');
+
+        if (config('deploy-notifier.settings.environment_url') !== null) {
+            $environment = '<a href="' . config('deploy-notifier.settings.environment_url') . '">' . $environment . '</a>';
+        }
+
+        return $environment;
     }
 }
