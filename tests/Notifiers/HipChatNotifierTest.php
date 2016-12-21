@@ -31,6 +31,10 @@ class HipChatNotifierTest extends \PHPUnit_Framework_TestCase
             ->method('sendRoomNotification')
             ->with(123, $this->isInstanceOf(\GorkaLaucirica\HipchatAPIv2Client\Model\Message::class));
 
+        $this->message->expects($this->once())
+            ->method('isHtml')
+            ->willReturn(true);
+
         $this->hipChatNotifier->sendNotification($this->message);
     }
 
